@@ -2,6 +2,15 @@
 #include <locale.h>
 using namespace std;
 
+//Função que verifica se o aluno passou ou não, retorna string
+string AprovadoReprovado(float notaAluno){
+    if(notaAluno >= 6.0){
+        return "Aprovado!";
+    }else{
+        return "Reprovado!";
+    }
+}
+
 int main(){
     setlocale(LC_ALL, "");
     const int MAX_ALUNOS = 100; // Defina o tamanho máximo do array
@@ -32,7 +41,7 @@ int main(){
     //impressão dos Resultados:
     cout << "\nResultados Média Final:\n";
     for(int c = 0; c < numeroAlunos; c++){
-        cout << alunos[c] << ": " << mediaAluno[c] << endl;
+        cout << alunos[c] << ": " << mediaAluno[c] << " - " << AprovadoReprovado(mediaAluno[c]) << endl;
     }
 
     cout << "Média Final da sala: " << mediaSala;
