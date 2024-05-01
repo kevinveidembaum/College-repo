@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <locale.h>
 using namespace std;
  
@@ -23,7 +24,9 @@ int main(){
     }
     // Calculando a média dos elementos e atualizando o valor de 'soma'
     soma /= numeroTotal;
-    // Imprimindo a média
-    cout << "A média dos números inseridos é: " << soma;
+    
+    // Imprimindo a média formatada para exibir 2 casas decimais
+    cout << setiosflags (ios::fixed) << setprecision(2) << "A média dos números inseridos é: " << soma;
+
     return 0;
 }
