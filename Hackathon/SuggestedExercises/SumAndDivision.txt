@@ -1,0 +1,23 @@
+(pt-br)
+Soma de números com divisão.
+
+Informe uma quantidade de números inteiros, faça o somatório e divida este somatório pelo último número que foi inserido.
+
+Entrada.
+A entrada contém um número inteiro com a quantidade de números que serão inseridos seguidos dos números que irão compor o somatório.
+
+Saída.
+Apresentar o resultado do cálculo com duas casas decimais.
+
+===============================================================================================
+
+(en)
+Sum of numbers with division.
+
+Enter a number of integers, add them together and divide by the last number entered.
+
+Input.
+The input contains an integer with the number of numbers to be entered followed by the numbers that will make up the sum.
+
+Output.
+Display the result of the calculation to two decimal places.
