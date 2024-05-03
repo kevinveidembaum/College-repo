@@ -22,5 +22,7 @@ int main(){
 			cout << "Noturno" << endl;
 			cout << "Boa Noite!";
 			break;
+        default:
+            cout << "Insira um valor válido." << endl;
 	}
 }
