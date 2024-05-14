@@ -1,35 +1,42 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <locale.h>
+#include <iostream>
+#include <iomanip>
+using namespace std;
+ 
+//Declaração das variáveis constantes
+const float TAXA_DOLAR = (1/5.15);
+const float TAXA_EURO =	(1/5.56);
+const float TAXA_LIBRA = (1/6.48);
+ 
+//Função para calcular a conversão das moedas
+float calculoConversao(float real, float taxa){
+	return real*taxa;
+}
+ 
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
-    float reais, taxa, valor_conv;
+    float reais, valor_conv;
     int moeda;
-    printf("Digite a quantia em reais ");
-    scanf("%f", &reais);
-    printf("Escolha a moeda 1-dólar  2-euro  3-libra ");
-    scanf("%d", &moeda);
+	cout << "Digite a quantia em reais ";
+    cin >> reais;
+    cout << "Escolha a moeda " <<endl;
+    cout << "1-Dolar  2-Euro  3-Libra" <<endl;
+    cin >> moeda;
     switch(moeda){
         case 1:
-            printf("Informe a taxa do dólar ");
-            scanf("%f", &taxa);
-            valor_conv = reais/taxa;
-            printf("Valor em dólares %.2f \n", valor_conv);
+            valor_conv = calculoConversao(reais, TAXA_DOLAR);
+            cout << setiosflags (ios::fixed) << setprecision(2) << "Valor em Dolares: " << valor_conv;
+            
             break;
         case 2:
-            printf("Informe a taxa do euro ");
-            scanf("%f", &taxa);
-            valor_conv = reais/taxa;
-            printf("Valor em euros %.2f \n", valor_conv);
+            valor_conv = calculoConversao(reais, TAXA_EURO);
+            cout << setiosflags (ios::fixed) << setprecision(2) << "Valor em Euro: " << valor_conv;
             break;
         case 3:
-            printf("Informe a taxa da libra ");
-            scanf("%f", &taxa);
-            valor_conv = reais/taxa;
-            printf("Valor em libras %.2f \n", valor_conv);   
+            valor_conv = calculoConversao(reais, TAXA_LIBRA);
+            cout << setiosflags (ios::fixed) << setprecision(2) << "Valor em Libra: " << valor_conv;  
             break;
         default:
-            printf("Moeda inválida");   
+            cout << "Insira um valor valido";  
     }
 }
