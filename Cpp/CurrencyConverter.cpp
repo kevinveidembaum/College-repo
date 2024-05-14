@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
  
 //Declaração das variáveis constantes
@@ -24,15 +25,16 @@ int main()
     switch(moeda){
         case 1:
             valor_conv = calculoConversao(reais, TAXA_DOLAR);
-            cout << "Valor em Dolares: " << valor_conv;
+            cout << setiosflags (ios::fixed) << setprecision(2) << "Valor em Dolares: " << valor_conv;
+            
             break;
         case 2:
             valor_conv = calculoConversao(reais, TAXA_EURO);
-            cout << "Valor em Euro: " << valor_conv;
+            cout << setiosflags (ios::fixed) << setprecision(2) << "Valor em Euro: " << valor_conv;
             break;
         case 3:
             valor_conv = calculoConversao(reais, TAXA_LIBRA);
-            cout << "Valor em Libra: " << valor_conv;  
+            cout << setiosflags (ios::fixed) << setprecision(2) << "Valor em Libra: " << valor_conv;  
             break;
         default:
             cout << "Insira um valor valido";  
