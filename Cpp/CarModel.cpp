@@ -6,7 +6,7 @@ int main(){
 	int qntd_estoque, alugado, carro;
 	float v_loc;
 	printf("Digite o modelo de carro desejado \n ");
-	scanf("%s", &modelo);
+	scanf("%s", modelo);
 	printf("Quantidade em estoque \n");
 	scanf("%d", &qntd_estoque);
 	printf("Quantidade que esta alugada \n");
