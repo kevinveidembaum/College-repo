@@ -4,9 +4,9 @@
  
 int main(){
 	setlocale(LC_ALL, "Portuguese");
-	unsigned long long int num[5], fatorial=1;
-	for(int i=0; i < 5; i++){
-		printf("\nDigite o %dº número: ", i+1);
+	unsigned long long int num[10], fatorial=1;
+	for(int i=0; i < 10; i++){
+		printf("Digite o %dº número: ", i+1);
 		scanf("%lld", &num[i]);
 		if(num[i] < 0){
 			printf("Número inválido!");
@@ -18,7 +18,7 @@ int main(){
 			fatorial *= k;
 		}
 
-		printf("\nFatorial de %lld é: %lld", num[i], fatorial);
+		printf("Fatorial de %lld é: %lld\n", num[i], fatorial);
 
 	}
 }
