@@ -8,7 +8,6 @@ int main(){
   for (int i=0;i < 10;i++) {
     printf("Informe a %i° cor: ", i+1);
     fgets(cores[i], sizeof(cores), stdin); 
-
     cores[i][strcspn(cores[i], "\n")] = '\0';
   }
 
@@ -17,7 +16,6 @@ int main(){
   while(1){
     printf("Pesquise uma cor: [FIM para encerrar]\n");
     fgets(pesquisa, sizeof(pesquisa), stdin);
-
     pesquisa[strcspn(pesquisa, "\n")] = '\0';
 
     if(strcmp(pesquisa, "FIM") == 0){
@@ -37,9 +35,6 @@ int main(){
       printf("A palavra '%s' não foi encontrada!\n", pesquisa);
     }
 
-  }
-  
+  } 
   printf("Obrigado, volte sempre!");
-
-
 }
