@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int pontos[9] = {23, 43, 65, 62, 15, 50, 59, 77, 12};
+int pontos[9] = {23, 62, 65, 62, 62, 50, 59, 77, 62};
 string nome[9] = {"Vitoria", "Gremio", "Flamengo", "Bahia", "Pernanbuco", "Fluminense", "Botafogo", "Palmeiras", "Santos"};
 int gols[9] = {33, 23, 52, 64, 75, 16, 22, 74, 50};
 
@@ -35,8 +35,15 @@ void ordena()
    {
      valida=false;
      for (posicao=0; posicao < 8;posicao++){
-         
-		   if(pontos[posicao] > pontos[posicao+1]){                               
+       bool fazerTroca = false; 
+
+       if (pontos[posicao] < pontos[posicao+1]) {
+         fazerTroca = true;
+       }else if (pontos[posicao] == pontos[posicao+1] && gols[posicao] < gols[posicao+1]) {
+         fazerTroca = true;
+       }
+
+		   if(fazerTroca){                               
 	          troca = pontos[posicao];
 	          pontos[posicao] = pontos[posicao+1];          
 	          pontos[posicao+1] = troca;
@@ -64,10 +71,4 @@ int main(){
 	exibir();
 	ordena();
 	exibir();
-
-
-
-
-
-
 }
