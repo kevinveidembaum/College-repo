@@ -99,13 +99,13 @@ void exibirVenda()
 }
 
 void buscarCliente(){
-	printf("Informe a posicao para busca do Cliente: ");
+	printf("\nInforme a posicao para busca do Cliente: ");
 	scanf("%i", &posicao);       
 	exibeCliente();
 }
 
 void buscarProduto(){
-	printf("Informe a posicao para busca do Produto: ");
+	printf("\nInforme a posicao para busca do Produto: ");
 	scanf("%i", &posicao);       
 	exibirProduto();
 }
@@ -175,20 +175,19 @@ int main()
   }
 
   printf("\nQuantidade em Estoque desse Produto: %i", produto[indiceProduto].qtd);
-  printf("\nInforme a quantidade do Produto: ");
+  printf("\nInforme a quantidade do Produto para Venda: ");
   scanf("%i", &qtdVender);
 
   if (qtdVender <= produto[indiceProduto].qtd) {
     valorTotal = qtdVender * produto[indiceProduto].valor;
+    
     vendas[0].total = valorTotal;
+    vendas[0].qtdTotalProdutos = qtdVender;
 
     produto[indiceProduto].qtd -= qtdVender;
   }
 
   exibirVenda();
-
-
-
 	buscarCliente();
 	buscarProduto();
 }
