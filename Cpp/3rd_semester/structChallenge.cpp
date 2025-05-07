@@ -89,20 +89,25 @@ void exibeCliente()
 	printf("RG: %s \n", cliente[posicao].rg);
 }
 
+void exibirVenda()
+{
+	printf("\nVenda na Posicao: %i\n", posicao);
+	printf("Codigo: %i \n", vendas[0].codigoVenda);
+	printf("Quantidade total de Produtos: %i \n", vendas[0].qtdTotalProdutos);
+	printf("Total: R$%.2f \n", vendas[0].total);
+	printf("Nome do Cliente: %s \n", vendas[0].codCliente.nome);
+}
+
 void buscarCliente(){
-	system("cls");
 	printf("Informe a posicao para busca do Cliente: ");
 	scanf("%i", &posicao);       
 	exibeCliente();
-	system("pause"); 
 }
 
 void buscarProduto(){
-	system("cls");
 	printf("Informe a posicao para busca do Produto: ");
 	scanf("%i", &posicao);       
 	exibirProduto();
-	system("pause"); 
 }
 
 
@@ -128,7 +133,8 @@ int pesquisarCodigoProduto(TbProduto array[], int codigo) {
 int main() 
 {
 	char nome[10];
-  int codigoCliente, codigoProduto;
+  int codigoCliente, codigoProduto, qtdVender;
+  float valorTotal;
 
 	do
 	{	
@@ -142,32 +148,47 @@ int main()
 		
 		inserirProduto();
 		
-		printf("Informe 1 para continuar: ");
+		printf("\nInforme 1 para continuar: ");
 		scanf("%i", &continua);    
-		system("cls");
 	}
 	while (continua == 1);
-
+  
+  printf("\n==========Vendas============\n");
   printf("Informe o código do Cliente: ");
   scanf("%i", &codigoCliente);
 
   int indiceCliente = pesquisarCodigoCliente(cliente, codigoCliente);
   if (indiceCliente == -1) {
     cout << "Cliente com código " << codigoCliente << " não encontrado." << endl;
+    return 0;
   }
 
-  cout << "Cliente encontrado" << endl;
-
+  vendas[0].codCliente = cliente[indiceCliente];
+  
   printf("Informe o código do Produto: ");
   scanf("%i", &codigoProduto);
 
   int indiceProduto = pesquisarCodigoProduto(produto, codigoProduto);
   if (indiceProduto == -1) {
     cout << "Produto com código " << codigoProduto << " não encontrado." << endl;
+    return 0;
   }
 
-  cout << "Produto encontrado" << endl;
-	
+  printf("\nQuantidade em Estoque desse Produto: %i", produto[indiceProduto].qtd);
+  printf("\nInforme a quantidade do Produto: ");
+  scanf("%i", &qtdVender);
+
+  if (qtdVender <= produto[indiceProduto].qtd) {
+    valorTotal = qtdVender * produto[indiceProduto].valor;
+    vendas[0].total = valorTotal;
+
+    produto[indiceProduto].qtd -= qtdVender;
+  }
+
+  exibirVenda();
+
+
+
 	buscarCliente();
 	buscarProduto();
 }
