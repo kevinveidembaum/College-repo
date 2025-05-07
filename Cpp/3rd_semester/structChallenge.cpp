@@ -1,8 +1,9 @@
 #include <stdio.h> 
 #include <stdlib.h>
+#include <iostream>
+using namespace std;
 
-
-int posicao, continua;    
+int posicao, continua;
 
 
 
@@ -18,7 +19,7 @@ struct TbCliente  //cliente
 	int codigo;
 	char nome[40];
 	char bairro[40];
-	char cidade[60];     
+	char cidade[60];
 	char telefone[10];
 	char cpf[11];
 	char rg[9];
@@ -33,11 +34,10 @@ struct TbVenda
 };
 
 
-//acima defini uma tipo estrutura chamada TbCliente
 struct TbCliente cliente[10];
 struct TbProduto produto[10];
 struct TbVenda vendas[10];
-//criei uma matriz de estrutura, assim em cada posicao alimento os 4 atributos
+
 
 void insereCliente()
 {
@@ -106,10 +106,30 @@ void buscarProduto(){
 }
 
 
+int pesquisarCodigoCliente(TbCliente array[], int codigo) {
+    for (int i = 0; i < 10; i++) {
+        if (array[i].codigo == codigo) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int pesquisarCodigoProduto(TbProduto array[], int codigo) {
+    for (int i = 0; i < 10; i++) {
+        if (array[i].codigo == codigo) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
 int main() 
 {
 	char nome[10];
-	
+  int codigoCliente, codigoProduto;
+
 	do
 	{	
 		printf("\nInforme o index da ficha de registro: ");    
@@ -127,45 +147,28 @@ int main()
 		system("cls");
 	}
 	while (continua == 1);
-	
-	int codigoCliente;
-	
-	printf("Informe o Código do Cliente que fez uma Compra: ");
-	scanf("%i", &codigoCliente);
-	
-	//pesquisa pelo codigo cliente
-	for(int i=0; i < 10; i++){
-		bool achou = false;
-		
-		if(cliente[i].codigo == codigoCliente){
-			achou = true;
-			vendas[i].codCliente = cliente[i];
-			
-			break;
-		}
-	}
-	
-	int codigoProduto;
-	
-	printf("Informe o Código do Produto que foi Comprado: ");
-	scanf("%i", &codigoProduto);
-	
-	//pesquisa pelo codigo cliente
-	for(int i=0; i < 10; i++){
-		bool achou = false;
-		
-		if(produto[i].codigo == codigoProduto){
-			achou = true;
-			vendas[i].codCliente = cliente[i];
-			
-			break;
-		}
-	}
-	
-	
-	
+
+  printf("Informe o código do Cliente: ");
+  scanf("%i", &codigoCliente);
+
+  int indiceCliente = pesquisarCodigoCliente(cliente, codigoCliente);
+  if (indiceCliente == -1) {
+    cout << "Cliente com código " << codigoCliente << " não encontrado." << endl;
+  }
+
+  cout << "Cliente encontrado" << endl;
+
+  printf("Informe o código do Produto: ");
+  scanf("%i", &codigoProduto);
+
+  int indiceProduto = pesquisarCodigoProduto(produto, codigoProduto);
+  if (indiceProduto == -1) {
+    cout << "Produto com código " << codigoProduto << " não encontrado." << endl;
+  }
+
+  cout << "Produto encontrado" << endl;
 	
 	buscarCliente();
-	buscarProduto();   
-}    
+	buscarProduto();
+}
 
