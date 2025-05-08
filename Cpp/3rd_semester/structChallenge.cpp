@@ -91,7 +91,7 @@ void exibeCliente()
 
 void exibirVenda()
 {
-	printf("\nVenda na Posicao: %i\n", posicao);
+	printf("\nVenda na Posicao: %i\n", 0);
 	printf("Codigo: %i \n", vendas[0].codigoVenda);
 	printf("Quantidade total de Produtos: %i \n", vendas[0].qtdTotalProdutos);
 	printf("Total: R$%.2f \n", vendas[0].total);
